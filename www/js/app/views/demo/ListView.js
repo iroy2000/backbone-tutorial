@@ -1,6 +1,5 @@
-/**
- * This is just a Demo Testing View
- */
+// This is just a Demo Testing View
+// This is how you define a RequireJS module 
 define(['text!templates/demo/data_row.html', 'text!templates/demo/container.html'],function(DataRowTemplate, ContainerTemplate) {
     // this is the view for each item in the List
     var ViewItem = Backbone.View.extend({
@@ -8,14 +7,21 @@ define(['text!templates/demo/data_row.html', 'text!templates/demo/container.html
         events: {
             "click .remove": "remove"
         },
+        // all your backbone object has this function
+        // it is for your to setup or initialize
+        // this function will be called when this View is instantiated
         initialize: function(options) {
             this.template = _.template(DataRowTemplate);
         },
         remove: function(e) {
+            // destory is a model function, it means delete itself
             this.model.destroy();
+
+            // backbone is using jQuery ( or other jQuery like lib ) for DOM operation
             this.$el.remove();
             e.preventDefault();
         },
+        // appending templatize item into the DOM
         render: function() {
             this.$el.html(this.template(this.model.toJSON()));
             return this;

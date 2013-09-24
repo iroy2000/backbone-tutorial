@@ -1,4 +1,5 @@
-// text! plugin is for requireJS fetch a file as text
+// text! plugin is for requireJS fetching a file as text
+// What we do here is fetching a template and use in our view
 define(['text!templates/demo/user_detail.html'], function(UserDetailTemplate) {
     return Backbone.View.extend({
         initialize: function() {

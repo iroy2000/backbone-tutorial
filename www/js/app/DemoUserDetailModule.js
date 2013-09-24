@@ -1,3 +1,5 @@
+// This is how you defined a requireJS module
+// The callback function parameter has to match the position of the beginning array
 define(['models/Demo', 'views/demo/UserDetailView'], function(TestData, UserDetailView) {
     var DemoUserDetailModule = function(options) {
         this.collection = new TestData.Collection;

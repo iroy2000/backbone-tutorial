@@ -1,4 +1,6 @@
 // This is how you define a RequireJS module
+// The callback function parameter has to match the beginning array position
+// The naming of the parameter is arbitrary, could be anything you consider meaningful
 define(['backbone', 'underscore', 'localstorage'], function (Backbone, _, localstorage) {
     // This is the main container DOM id
     // View for each router will overwrite this DOM
