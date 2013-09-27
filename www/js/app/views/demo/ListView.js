@@ -52,22 +52,27 @@ define(['text!templates/demo/data_row.html', 'text!templates/demo/container.html
             // we clean the list first
             this.$el.empty();
             this.$el.append(this.template);
-           
+
             // we only need to parse the following logic if collection has more than 1 item 
             if(this.collection.length > 0) {
+                var fragment = document.createDocumentFragment();
+                
                 // sort the collection based on our criteria defined in model comparator
                 this.collection.sort();
 
                 // we show the header
                 this.$el.find('.table-striped').show();                
 
-                // we display all items
-                this.collection.each(_.bind(function(model) {
+                // we load all items into a floating dom
+                this.collection.each(function(model) {
                     var itemView = new ViewItem({
                         model:model
                     });
-                    this.$el.find('tbody').append(itemView.render().$el);
-                },this));
+                    
+                    fragment.appendChild(itemView.render().el);
+                });
+
+                this.$el.find('tbody').append(fragment);
             }
         }
     });
